@@ -1,0 +1,9 @@
+// Bootswatch
+@import '{}/client/styles/_bootswatch.scss';
+
+
+// core component sheets
+@import './components/header/index.scss';
+
+// component sheets
+@import './components/home/index.scss';

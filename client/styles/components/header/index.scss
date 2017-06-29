@@ -1,0 +1,25 @@
+nav {
+  display: table;
+
+  .navbar-logo {
+    width: 200px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url('/images/ucla_anderson_logo.jpg');
+    display: inline-block;
+  }
+
+  .navbar-title {
+    display: inline-block;
+
+    .title {
+      margin-top: -10px;
+    }
+  }
+
+  .navbar-links {
+    display: inline-block;
+  }
+
+}
