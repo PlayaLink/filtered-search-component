@@ -12,42 +12,65 @@ export default class EventSearchPage extends Component {
     super(props);
 
     this.state = {
-      filters: [{fieldType: "type",
-                  filterValue: "All"},
-                  employerName: "All", industry: "All", hasCatering: "All", registrationStatus: "All"]
-
-
-
-
-
-      },
+      filters: [
+        {
+          filterType: "type",
+          filterValue: "All"
+        },
+        {
+          filterType: "employerName",
+          filterValue: "All"
+        },
+        {
+          filterType: "filterhHasCatering",
+          filterValue: "All"
+        },
+        {
+          filterType: "registrationStatus",
+          filterValue: "All"
+        },
+        {
+          filterType: "industry",
+          filterValue: "All"
+        }
+      ],
       events: []
     }
+
+    this.applyFilters = this.applyFilters.bind(this);
+    this.updateFilters = this.updateFilters.bind(this);
+
   }
 
-  applyFilters(events, filters){
-    events.filter(function(event){
-      for(let i = 0; i < filters.length; i++){
-        if(event.hasOwnProperty(filters[i].fieldType) && event.filters[i].fieldType === filters[i].filterValue){
-          return true;
-        }
-        return false;
-      }
-    }
-    return filteredEvents;
+  applyFilters(eventList, filters){
+    debugger;
+    const filteredEvents = [];
+    filters
   }
 
   updateFilters(fieldName, value){
-    this.setState( { [fieldName]: value} )
+    let newState = [];
+    this.state.filters.map( (filter) => {
+      if(filter.filterType === fieldName){
+        filter.filterValue = value;
+        newState.push(filter);
+      }
+      newState.push(filter);
+    });
+    this.setState(newState);
+    console.log("Current State:", this.state);
   }
 
   render() {
+    debugger;
     let events = this.props.events;
-    let filter = this.state.
+    let filters = this.state.filters;
+    events = this.applyFilters(events, filters);
+    console.log(events);
     return (
       <div>
         <Header />
-        <Filters updateFilters={ () = > this.updateFilters} filters={this.props.filters}/>
+        <Filters updateFilters={this.updateFilters} filters={this.props.filters}/>
         <EventList events={this.props.events} />
       </div>
 

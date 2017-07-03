@@ -23,7 +23,7 @@ export default class Filters extends Component {
                     What kind of event are you looking for?
                   </legend>
                     {filters.map( (filter) => {
-                      return <FilterDropdown fieldName={filter.fieldName} options={filter.options} />
+                      return <FilterDropdown updateFilters={this.props.updateFilters} fieldName={filter.fieldName} options={filter.options} />
                     })}
                 </fieldset>
               </form>

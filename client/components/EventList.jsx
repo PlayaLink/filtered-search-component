@@ -7,7 +7,7 @@ export default class EventList extends Component {
   render() {
     return (
       <section className="event-list">
-        <h4>Results: <span class="badge">{this.props.events.length}</span></h4>
+        <h4>Results: <span className="badge">{this.props.events.length}</span></h4>
         <table className="table table-striped table-hover ">
           <thead>
             <tr>
@@ -25,7 +25,7 @@ export default class EventList extends Component {
 
           </tbody>
         </table>
-      </section>      
+      </section>
     );
   }
 }

@@ -6,7 +6,12 @@ import EventSearchPage from './components/EventSearchPage.jsx';
 
 // App component - represents the whole app
 export default class App extends Component {
+  constructor(){
+    super();
 
+    this.getEvents = this.getEvents.bind(this);
+    this.getEvents = this.getEvents.bind(this);
+  }
   getEvents() {
     return eventList;
   }

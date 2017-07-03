@@ -4,6 +4,10 @@ export default class FilterDropdown extends Component {
   constructor(props){
     super(props);
 
+    this.state = {
+      selectValue: "All"
+    };
+
     this.camelCaseToWords = this.camelCaseToWords.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
   }
@@ -14,10 +18,14 @@ export default class FilterDropdown extends Component {
     }).join(' ');
   }
 
-  handleSelectChange(){
-    return (event) => {
-      this.props.updateFilters(this.props.fieldName, event.target.value);
-    }
+  handleSelectChange(e){
+    let newFilterValue = e.target.value
+    this.setState({selectValue : newFilterValue});
+    this.props.updateFilters(this.props.fieldName, newFilterValue);
+  }
+
+  handleFiterUpdate(){
+
   }
 
   render() {
@@ -27,7 +35,7 @@ export default class FilterDropdown extends Component {
           {this.camelCaseToWords(this.props.fieldName)}
         </label>
         <div className="col-lg-10">
-          <select onChange={this.handleSelectChange()} id={this.props.fieldName} name={this.props.fieldName} className="form-control">
+          <select value={this.state.selectValue} ref="newFilter" onChange={this.handleSelectChange} id={this.props.fieldName} name={this.props.fieldName} className="form-control">
             <option defaultValue value="all">All</option>
             {this.props.options.map( (option) => {
               return <option key={option} value={option}>{option}</option>
