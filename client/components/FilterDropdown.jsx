@@ -19,7 +19,7 @@ export default class FilterDropdown extends Component {
   }
 
   handleSelectChange(e){
-    let newFilterValue = e.target.value
+    let newFilterValue = e.target.value;
     this.setState({selectValue : newFilterValue});
     this.props.updateFilters(this.props.fieldName, newFilterValue);
   }
